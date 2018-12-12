@@ -13,7 +13,8 @@ For example, for the following tests run the statements in the respective sectio
 ## OneToOne
 
 --run db migration
-php artisan migrate --path="database/migrations/HasManyThrough"
+
+`php artisan migrate --path="database/migrations/HasManyThrough"`
 
 --then run 
 $ php artisan tinker 
