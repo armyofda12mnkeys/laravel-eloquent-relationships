@@ -58,12 +58,19 @@ $post2 = new  App\Models\HasManyThrough\Post([
   'title' => 'Post #2',
   'body' => 'This is the body.'
 ]);
+$post3 = new  App\Models\HasManyThrough\Post([
+  'title' => 'Post #3',
+  'body' => 'This is the body.'
+]);
 
 $post->appUser()->associate($app_user);
 $post->save();
 
 $post2->appUser()->associate($app_user2);
 $post2->save();
+
+$post3->appUser()->associate($app_user);
+$post3->save();
 
 ##################################real main test
 
@@ -72,11 +79,14 @@ var_dump( $country_found_US->posts()->first() );
 echo $country_found_US->posts()->first()->title;
 
 $country_found_MX = App\Models\HasManyThrough\Country::find(5);
+echo $country_found_MX->posts()->count();
 var_dump( $country_found_MX->posts()->first() );
 echo $country_found_MX->posts()->first()->title;
 
+note: ->posts() is a query , while ->posts is the actual Models
 
-
+//Loop over a collection in Tinker
+foreach( $country_found_MX->posts as $post) { echo $post->title; }
 
 
 
