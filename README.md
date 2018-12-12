@@ -2,11 +2,12 @@
 
 This is a project to help you tinker around and play with Laravel's Eloquent Relationships.
 
-First change the database username and password and database name 
-  (and if needed, host and port) inside of Laravel's .env file to your username and pass.
-In the database/migrations folder I have the tables setup.
-In the app/Models directory, I have the models associated with those. 
-  Also in that folder is a info.txt file to show you what you need to run to tinker with this test.
+First, copy the .env file, `cp .env.example .env`, and change the database username, password, and database schema name to whatever user/db/empty schema you have locally setup (and also if needed, change the host and port).
+
+In the database/migrations folder I have the migration tables setup.
+In the app/Models directory, I have the models associated with those tables and their relationships defined. 
+  Also in each of those Model folders is an 'info.txt' file to show you what you need to run to tinker with this test.
+  I like to check the database after each ->save();
 
 For example, for the following tests run the statements in the respective section below:
 
