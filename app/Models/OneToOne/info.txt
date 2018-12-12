@@ -1,0 +1,26 @@
+$ php artisan migrate --path="database/migrations/OneToOne"
+
+
+select * FROM app_users;
+select * FROM phones;
+--select * FROM migrations;
+
+$ php artisan tinker
+
+$app_user = new  App\Models\OneToOne\AppUser([
+  'name' => 'John',
+  'username' => 'john@example.com',
+  'email' => 'john@example.com'
+]);
+
+$phone = new App\Models\OneToOne\Phone([
+  'phone' => '215-123-1234'
+]);
+$app_user->save();
+
+$app_user->phone()->save($phone);
+//$app_user->phone()->associate($phone);
+//$app_user->phone()->attach($phone);
+
+
+$ php artisan migrate:reset --path="database/migrations/OneToOne"

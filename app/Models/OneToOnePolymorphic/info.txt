@@ -1,0 +1,36 @@
+$ php artisan migrate --path="database/migrations/OneToOnePolymorphic"
+
+
+select * FROM app_users;
+select * FROM posts;
+select * FROM images;
+--select * FROM migrations;
+
+$ php artisan tinker
+
+$app_user = new  App\Models\OneToOnePolymorphic\AppUser([
+  'name' => 'John',
+  'username' => 'john@example.com',
+  'email' => 'john@example.com'
+]);
+
+$post = new  App\Models\OneToOnePolymorphic\Post([
+  'title' => 'Post #1',
+  'body' => 'This is the body.'
+]);
+
+$image = new  App\Models\OneToOnePolymorphic\Image([
+  'url' => 'http://cool.dood'
+]);
+
+$app_user->save();
+$post->save();
+
+$app_user->image()->save($image);
+//should save 1 row to images
+
+$post->image()->save($image);
+//since 1:1 relationship, should update the above row basically and point to post instead
+//if i want a Post to have that 1 image, and also AppUser to also be able to insert a 2nd row to have that same image then i need another type of relationship, maybe a Many to Many?
+
+$ php artisan migrate:reset --path="database/migrations/OneToOnePolymorphic"

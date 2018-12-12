@@ -1,0 +1,66 @@
+https://itsolutionstuff.com/post/laravel-many-to-many-polymorphic-relationship-tutorialexample.html
+
+
+$ php artisan migrate --path="database/migrations/ManyToManyPolymorphic"
+
+
+select * FROM posts;
+select * FROM videos;
+select * FROM tags;
+select * FROM taggables;
+--select * FROM migrations;
+
+$ php artisan tinker
+
+
+$post = new  App\Models\ManyToManyPolymorphic\Post([
+  'title' => 'Post #1',
+  'body' => 'This is the body.'
+]);
+$post2 = new  App\Models\ManyToManyPolymorphic\Post([
+  'title' => 'Post #2',
+  'body' => 'This is the body.'
+]);
+$post3 = new  App\Models\ManyToManyPolymorphic\Post([
+  'title' => 'Post #3',
+  'body' => 'This is the body.'
+]);
+
+$video = new  App\Models\ManyToManyPolymorphic\Video([
+  'video_title' => 'Video #1',
+  'video_url' => 'http://cool.dood/video1.mpg'
+]);
+$video2 = new  App\Models\ManyToManyPolymorphic\Video([
+  'video_title' => 'Video #2',
+  'video_url' => 'http://cool.dood/video2.mpg'
+]);
+
+$post->save();
+$post2->save();
+$post3->save();
+$video->save();
+$video2->save();
+
+
+$tag1 = new  App\Models\ManyToManyPolymorphic\Tag([
+  'tag_name' => 'Tag #1'
+]);
+$tag2 = new  App\Models\ManyToManyPolymorphic\Tag([
+  'tag_name' => 'Tag #2'
+]);
+$tag3 = new  App\Models\ManyToManyPolymorphic\Tag([
+  'tag_name' => 'Tag #3'
+]);
+$tag4 = new  App\Models\ManyToManyPolymorphic\Tag([
+  'tag_name' => 'Tag #4'
+]);
+
+
+$post->tags()->saveMany([$tag1,$tag2]); 
+$post2->tags()->saveMany([$tag3,$tag4]); 
+$video->tags()->saveMany([$tag2,$tag3]);
+
+$post3->tags()->saveMany([$tag1,$tag3]);
+$video2->tags()->saveMany([$tag1,$tag3]);
+
+$ php artisan migrate:reset --path="database/migrations/ManyToManyPolymorphic"

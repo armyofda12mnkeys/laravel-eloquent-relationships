@@ -1,0 +1,66 @@
+$ php artisan migrate --path="database/migrations/OneToManyPolymorphic"
+
+
+select * FROM posts;
+select * FROM videos;
+select * FROM comments;
+--select * FROM migrations;
+
+$ php artisan tinker
+
+
+$post = new  App\Models\OneToManyPolymorphic\Post([
+  'title' => 'Post #1',
+  'body' => 'This is the body.'
+]);
+$post2 = new  App\Models\OneToManyPolymorphic\Post([
+  'title' => 'Post #2',
+  'body' => 'This is the body.'
+]);
+
+$video = new  App\Models\OneToManyPolymorphic\Video([
+  'video_title' => 'Video #1',
+  'video_url' => 'http://cool.dood/video1.mpg'
+]);
+$video2 = new  App\Models\OneToManyPolymorphic\Video([
+  'video_title' => 'Video #2',
+  'video_url' => 'http://cool.dood/video2.mpg'
+]);
+
+
+
+$post->save();
+$post2->save();
+$video->save();
+$video2->save();
+
+
+$comment1 = new  App\Models\OneToManyPolymorphic\Comment([
+  'comment_title' => 'Comment #1',
+  'comment_body' => 'This is the comment body.'
+]);
+$comment2 = new  App\Models\OneToManyPolymorphic\Comment([
+  'comment_title' => 'Comment #2',
+  'comment_body' => 'This is the comment body.'
+]);
+$comment3 = new  App\Models\OneToManyPolymorphic\Comment([
+  'comment_title' => 'Comment #3',
+  'comment_body' => 'This is the comment body.'
+]);
+$comment4 = new  App\Models\OneToManyPolymorphic\Comment([
+  'comment_title' => 'Comment #4',
+  'comment_body' => 'This is the comment body.'
+]);
+
+
+//also works: $post->comments()->save($comment1);
+$post->comments()->saveMany([$comment1,$comment2]); 
+$video->comments()->saveMany([$comment3,$comment4]);
+
+//$post2->comments()->saveMany([$comment1,$comment3]);
+//$video2->comments()->saveMany([$comment1,$comment3]);
+//hmmmmmm, this doesn't work as expected since this is more of a Many to Many Polymorphic relationship. Will try that next if that is what you are expecting (the same Comment to be 'shared' to Videos and Posts)
+
+
+
+$ php artisan migrate:reset --path="database/migrations/OneToManyPolymorphic"

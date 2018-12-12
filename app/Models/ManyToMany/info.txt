@@ -1,0 +1,43 @@
+$ php artisan migrate --path="database/migrations/ManyToMany"
+
+
+select * FROM app_users;
+select * FROM roles;
+select * FROM app_user_roles;
+--select * FROM migrations;
+
+$ php artisan tinker
+
+
+$app_user = new  App\Models\ManyToMany\AppUser([
+  'name' => 'John',
+  'username' => 'john@example.com',
+  'email' => 'john@example.com'
+]);
+$app_user->save();
+
+$role_1 = new  App\Models\ManyToMany\Role([
+  'role_name' => 'Admin Role'
+]);
+$role_2 = new  App\Models\ManyToMany\Role([
+  'role_name' => 'Editor Role'
+]);
+$role_3 = new  App\Models\ManyToMany\Role([
+  'role_name' => 'View Role'
+]);
+$role_1->save();
+$role_2->save();
+$role_3->save();
+
+$app_user->roles()->save($role_1);
+$app_user->roles()->save($role_2);
+$app_user->roles()->save($role_3);
+
+$app_user->roles()->saveMany([$role_1,$role_2,$role_3]);
+
+$app_user->roles()->attach($role_1);
+$app_user->roles()->attach($role_2);
+$app_user->roles()->attach($role_3);
+
+$ php artisan migrate:reset --path="database/migrations/ManyToMany"
+

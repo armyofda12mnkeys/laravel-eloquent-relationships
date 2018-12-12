@@ -1,0 +1,36 @@
+$ php artisan migrate --path="database/migrations/OneToMany"
+
+
+select * FROM posts;
+select * FROM comments;
+--select * FROM migrations;
+
+$ php artisan tinker
+
+$post = new  App\Models\OneToMany\Post([
+  'title' => 'Post #1',
+  'body' => 'This is the body.'
+]);
+
+$comment_1 = new App\Models\OneToMany\Comment([
+  'comment_title' => 'Comment #1',
+  'comment_body' => 'This is for comment #1.'
+]);
+$comment_2 = new App\Models\OneToMany\Comment([
+  'comment_title' => 'Comment #2',
+  'comment_body' => 'This is for comment #2.'
+]);
+$comment_3 = new App\Models\OneToMany\Comment([
+  'comment_title' => 'Comment #3',
+  'comment_body' => 'This is for comment #3.'
+]);
+$post->save();
+
+$post->comments()->save($comment_1);
+$post->comments()->save($comment_2);
+$post->comments()->save($comment_3);//no array [$comment_1,$comment_2,$comment_3] way to do it???
+//$app_user->phone()->associate($phone);
+//$app_user->phone()->attach($phone);
+
+
+$ php artisan migrate:reset --path="database/migrations/OneToMany"
