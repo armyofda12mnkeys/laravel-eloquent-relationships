@@ -17,84 +17,109 @@ For example, for the following tests run the statements in the respective sectio
 `php artisan migrate --path="database/migrations/HasManyThrough"`
 
 --then run 
+
 `php artisan tinker`
-  --and run the statements i have in the info.txt in the Tinker playground
+  
+--and run the statements i have in the info.txt in the Tinker playground
 
 --then when done, run db reset to remove these tables if want to check out the next relationship to play around with
-$ php artisan migrate:reset --path="database/migrations/HasManyThrough"
+
+`php artisan migrate:reset --path="database/migrations/HasManyThrough"`
 
 ## OneToMany
 
 --run db migration
-$ php artisan migrate --path="database/migrations/OneToMany"
+
+`php artisan migrate --path="database/migrations/OneToMany"`
 
 --then run 
-$ php artisan tinker 
-  --and run the statements i have in the info.txt in the Tinker playground
+
+`php artisan tinker`
+
+--and run the statements i have in the info.txt in the Tinker playground
 
 --then when done, run db reset to remove these tables if want to check out the next relationship to play around with
-$ php artisan migrate:reset --path="database/migrations/OneToMany"
+
+`php artisan migrate:reset --path="database/migrations/OneToMany"`
 
 
 
 ## ManyToMany
 
 --run db migration
-$ php artisan migrate --path="database/migrations/ManyToMany"
+
+`php artisan migrate --path="database/migrations/ManyToMany"`
 
 --then run 
-$ php artisan tinker 
-  --and run the statements i have in the info.txt in the Tinker playground
+
+`php artisan tinker`
+
+--and run the statements i have in the info.txt in the Tinker playground
 
 --then when done, run db reset to remove these tables if want to check out the next relationship to play around with
-$ php artisan migrate:reset --path="database/migrations/ManyToMany"
+
+`php artisan migrate:reset --path="database/migrations/ManyToMany"`
 
 ## OneToOnePolymorphic
 
 --run db migration
-$ php artisan migrate --path="database/migrations/OneToOnePolymorphic"
+`php artisan migrate --path="database/migrations/OneToOnePolymorphic"`
 
 --then run 
-$ php artisan tinker 
-  --and run the statements i have in the info.txt in the Tinker playground
+`php artisan tinker`
+
+--and run the statements i have in the info.txt in the Tinker playground
 
 --then when done, run db reset to remove these tables if want to check out the next relationship to play around with
-$ php artisan migrate:reset --path="database/migrations/OneToOnePolymorphic"
+
+`php artisan migrate:reset --path="database/migrations/OneToOnePolymorphic"`
 
 
 ## OneToManyPolymorphic
 
 --run db migration
-$ php artisan migrate --path="database/migrations/OneToManyPolymorphic"
+
+`php artisan migrate --path="database/migrations/OneToManyPolymorphic"`
 
 --then run 
-$ php artisan tinker 
-  --and run the statements i have in the info.txt in the Tinker playground
+
+`php artisan tinker`
+
+--and run the statements i have in the info.txt in the Tinker playground
 
 --then when done, run db reset to remove these tables if want to check out the next relationship to play around with
-$ php artisan migrate:reset --path="database/migrations/OneToManyPolymorphic"
+
+`php artisan migrate:reset --path="database/migrations/OneToManyPolymorphic"`
 
 
 ## ManyToManyPolymorphic
 
 --run db migration
-$ php artisan migrate --path="database/migrations/ManyToManyPolymorphic"
+
+`php artisan migrate --path="database/migrations/ManyToManyPolymorphic"`
 
 --then run 
-$ php artisan tinker 
-  --and run the statements i have in the info.txt in the Tinker playground
+
+`php artisan tinker`
+
+--and run the statements i have in the info.txt in the Tinker playground
 
 --then when done, run db reset to remove these tables if want to check out the next relationship to play around with
-$ php artisan migrate:reset --path="database/migrations/ManyToManyPolymorphic"
+
+`php artisan migrate:reset --path="database/migrations/ManyToManyPolymorphic"`
 
 ## HasManyThrough
 
 --run db migration
-$ php artisan migrate --path="database/migrations/HasManyThrough"
+
+`php artisan migrate --path="database/migrations/HasManyThrough"`
 
 --then run 
-$ php artisan tinker 
-  --and run the statements i have in the info.txt in the Tinker playground
+
+`php artisan tinker`
+
+--and run the statements i have in the info.txt in the Tinker playground
 
 --then when done, run db reset to remove these tables if want to check out the next relationship to play around with
-$ php artisan migrate:reset --path="database/migrations/HasManyThrough"
+
+`php artisan migrate:reset --path="database/migrations/HasManyThrough"`
