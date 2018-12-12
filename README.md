@@ -17,7 +17,7 @@ For example, for the following tests run the statements in the respective sectio
 `php artisan migrate --path="database/migrations/HasManyThrough"`
 
 --then run 
-$ php artisan tinker 
+`php artisan tinker`
   --and run the statements i have in the info.txt in the Tinker playground
 
 --then when done, run db reset to remove these tables if want to check out the next relationship to play around with
